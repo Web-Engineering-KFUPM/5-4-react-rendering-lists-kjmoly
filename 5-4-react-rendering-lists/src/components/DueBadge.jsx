@@ -1,4 +1,3 @@
-// src/components/DueBadge.jsx
 function daysUntil(dateStr) {
   const today = new Date();
   const due = new Date(dateStr + "T00:00:00");
@@ -9,23 +8,16 @@ function daysUntil(dateStr) {
 }
 
 export default function DueBadge({ dueDate }) {
-  /* =========================================================
-     TASK 3 — Simple Conditional Rendering (ONLY && in other files)
-     ---------------------------------------------------------
-     GOAL:
-     Show one label based on daysUntil(dueDate):
+  const d = daysUntil(dueDate);
+  let label = "";
 
-       - "Overdue"        (if past)
-       - "Due today"      (if today)
-       - "Due in X days"  (if future)
+  if (d < 0) {
+    label = "Overdue";
+  } else if (d === 0) {
+    label = "Due today";
+  } else {
+    label = `Due in ${d} days`;
+  }
 
-     STEPS:
-     1) const d = daysUntil(dueDate)
-     2) Decide the label based on d
-     3) Return: <span className="badge">{label}</span>
-     ========================================================= */
-
-  // TODO (TASK 3): implement DueBadge label logic
-
-  return <span className="badge">Label here</span>;
+  return <span className="badge">{label}</span>;
 }
